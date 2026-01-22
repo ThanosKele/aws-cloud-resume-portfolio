@@ -37,7 +37,7 @@ The following diagram illustrates the serverless architecture constructed for th
 ## 📂 Project Structure
 
 ```bash
-thanos-cloud-resume/
+aws-cloud-resume-portfolio/
 ├── architecture-diagram/
 │   └── diagram.png       # Architecture diagram
 ├── backend/
