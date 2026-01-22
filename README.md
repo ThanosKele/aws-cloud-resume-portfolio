@@ -45,6 +45,7 @@ thanos-cloud-resume/
 ├── frontend/
 │   └── index.html        # Website structure, CSS, and JS API fetch logic
 └── README.md             # Project documentation
+```
 
 ## 🎓 Professional Context
 
