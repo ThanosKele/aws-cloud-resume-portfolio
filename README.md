@@ -47,6 +47,8 @@ aws-cloud-resume-portfolio/
 └── README.md             # Project documentation
 ```
 
+---
+
 ## 🎓 Professional Context
 
 This project was designed and built to showcase the practical application of my skills as an AWS Certified Solutions Architect – Associate. It serves as a production-ready demonstration of my ability to design, deploy, and troubleshoot complex serverless architectures within the AWS ecosystem. By bridging the gap between theoretical knowledge and hands-on implementation, this portfolio reflects my commitment to building secure, scalable, and efficient cloud solutions.
