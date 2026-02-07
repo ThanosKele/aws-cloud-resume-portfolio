@@ -28,7 +28,52 @@ From day one, the frontend deployment has been fully automated to ensure consist
 ## 🏗️ Phase 2: Kubernetes Modernization (Current)
 To demonstrate scalability and advanced orchestration, I migrated the **backend** from Lambda to **Amazon EKS (Kubernetes)** and automated the infrastructure provisioning.
 
-**![Architecture Phase 2 - EKS](./architecture-diagrams/new_architecture.png)**
+graph TD
+    %% Setup Styles
+    classDef aws fill:#FF9900,stroke:#232F3E,color:white;
+    classDef blue fill:#232F3E,stroke:#232F3E,color:white;
+    classDef plain fill:white,stroke:#333,color:black;
+
+    %% Nodes
+    User((User / Browser)):::plain
+    Dev((Developer / CLI)):::plain
+    GH((GitHub Actions)):::blue
+
+    subgraph AWS_Cloud [AWS Cloud]
+        direction TB
+        CF(Amazon CloudFront):::plain
+        S3(Amazon S3):::aws
+        ALB(ALB):::plain
+        
+        subgraph VPC [VPC]
+            EKS(Amazon EKS Cluster):::aws
+            Pods(Worker Nodes / Pods):::blue
+            IRSA(IRSA):::plain
+        end
+        
+        ECR(Amazon ECR):::aws
+        DDB(Amazon DynamoDB):::blue
+    end
+
+    %% Flows
+    User -->|HTTPS| CF
+    CF -->|Path: /| S3
+    CF -->|Path: /visit| ALB
+    ALB --> EKS
+    EKS --> Pods
+    
+    %% GitHub Actions
+    GH -->|Deploy Frontend| S3
+    GH -->|Invalidate Cache| CF
+    
+    %% Developer Flows (CORRECTED)
+    Dev -.->|Build & Push Image| ECR
+    Dev -.->|Apply Manifests| EKS
+    
+    %% Internal
+    ECR -.->|Image Pull| Pods
+    Pods -->|Assume Role| IRSA
+    IRSA -->|Access| DDB
 
 ### **The Migration & New Stack**
 * **Orchestration:** Migrated from Lambda to **Amazon EKS** (Managed Kubernetes).
