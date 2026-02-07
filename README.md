@@ -8,7 +8,7 @@ This repository contains my personal Cloud Resume project, showcasing the evolut
 ## 🏗️ Phase 1: The Serverless Foundation (Legacy)
 The project launched using a fully Serverless model to focus on rapid deployment and low maintenance.
 
-**![Architecture Phase 1 - Serverless](./architecture-diagrams/old-architecture.png)**
+**![Architecture Phase 1 - Serverless](./architecture-diagrams/old_architecture.png)**
 
 * **Frontend:** Hosted on **Amazon S3** and distributed via **Amazon CloudFront** for global caching.
 * **Backend:** **AWS Lambda** functions triggered by **Amazon API Gateway**.
@@ -28,7 +28,7 @@ From day one, the frontend deployment has been fully automated to ensure consist
 ## 🏗️ Phase 2: Kubernetes Modernization (Current)
 To demonstrate scalability and advanced orchestration, I migrated the **backend** from Lambda to **Amazon EKS (Kubernetes)** and automated the infrastructure provisioning.
 
-**![Architecture Phase 2 - EKS](./architecture-diagrams/new-architecture.png)**
+**![Architecture Phase 2 - EKS](./architecture-diagrams/new_architecture.png)**
 
 ### **The Migration & New Stack**
 * **Orchestration:** Migrated from Lambda to **Amazon EKS** (Managed Kubernetes).
@@ -81,5 +81,3 @@ The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is now managed
 
 ---
 > **Outcome:** This project demonstrates my ability to bridge the gap between software development and cloud operations, handling security, networking, and orchestration at scale.
-
-📫 **Let's connect!** [Link to your LinkedIn]
