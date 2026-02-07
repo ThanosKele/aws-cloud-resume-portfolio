@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanos Kelempekas | AWS Solutions Architect Portfolio</title>
+    <style>
+        :root {
+            --aws-navy: #232f3e;
+            --aws-orange: #ff9900;
+            --light-bg: #f4f7f6;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; background-color: var(--light-bg); color: #333; }
+        header { background: var(--aws-navy); color: white; padding: 3rem 1rem; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { color: var(--aws-orange); font-weight: bold; font-size: 1.2rem; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 20px; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        h2 { border-bottom: 2px solid var(--aws-orange); padding-bottom: 10px; color: var(--aws-navy); }
+        .project-tag { background: #e1e4e8; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-block; white-space: nowrap; }
+        .links a { display: inline-block; margin-right: 15px; text-decoration: none; color: var(--aws-navy); font-weight: bold; border: 1px solid var(--aws-navy); padding: 8px 16px; border-radius: 5px; transition: 0.3s; }
+        .links a:hover { background: var(--aws-navy); color: white; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Thanos Kelempekas</h1>
+    <p>AWS Certified Solutions Architect – Associate | AI Practitioner</p>
+</header>
+
+<div class="container">
+    <section class="card">
+        <h2>🚀 Professional Profile</h2>
+        <p>I am an <strong>AWS Certified Solutions Architect & AI Practitioner</strong> driven by the challenge of building cloud-native systems. My approach combines a strong academic foundation from the <strong>University of Macedonia (Applied Informatics)</strong> with hands-on experience in <strong>Infrastructure as Code (Terraform)</strong>, Serverless architectures and scalable AI workflows. I focus on bridging the gap between automated technical infrastructure and real-world business value.</p>
+        <div class="links">
+            <a href="https://www.linkedin.com/in/athanasios-kelempekas-3b7117223/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/ThanosKele" target="_blank">GitHub</a>
+        </div>
+    </section>
+	
+	<section class="card">
+		<h2 style="margin-bottom: 15px;">🛠️ Technical Toolbox</h2>
+		<div class="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0;">
+			<span class="project-tag" style="background-color: #232f3e; color: white;">Cloud: AWS</span>
+			<span class="project-tag" style="background-color: #5C4EE5; color: white;">IaC: Terraform</span>
+			<span class="project-tag">Python & Bash</span>
+			<span class="project-tag">Linux & Git</span>
+			<span class="project-tag">Serverless & AI</span>
+			<span class="project-tag">PHP/Laravel</span>
+		</div>
+	</section>
+	
+	<section class="card featured-projects">
+		<div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #FF9900; padding-bottom: 10px; margin-bottom: 20px; width: 100%;">
+			<h2 style="margin: 0; border: none; font-size: 1.5rem;">🛠️ Featured Projects</h2>
+			<span style="background-color: #FF9900; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; white-space: nowrap; margin-left: 10px;">AWS Cloud</span>
+		</div>
+
+		<div class="project-item" style="margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+			<img src="terraform_diagram.png" alt="AWS Architecture Diagram" 
+				style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ddd; display: block;">
+			
+			<h3>🏗️ AWS High Availability Infrastructure</h3>
+			<p>
+				A production-ready environment automated with <strong>Terraform (IaC)</strong>. 
+				It features a custom VPC, <strong>Application Load Balancer</strong>, <strong>Auto Scaling Group</strong>, 
+				and <strong>Multi-AZ RDS</strong>, designed for zero downtime and automated failover.
+			</p>
+			<div class="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0;">
+				<span class="project-tag">Terraform</span>
+				<span class="project-tag">IaC</span>
+				<span class="project-tag">VPC</span>
+				<span class="project-tag">ALB/ASG</span>
+				<span class="project-tag">Multi-AZ RDS</span>
+			</div>
+			<a href="https://github.com/ThanosKele/aws-terraform-ha-architecture" target="_blank" style="text-decoration: none; color: #007bff; font-weight: bold;">
+				View Source Code <span style="font-size: 1.2em;">&#8599;</span>
+			</a>
+		</div>
+
+		<div class="project-item" style="margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+			<h3>🧾 AI-Powered Receipt Scanner</h3>
+			<p>
+				An event-driven serverless application that automatically processes receipt images. 
+				It leverages <strong>Amazon Textract (AI)</strong> to extract data and stores it in 
+				<strong>DynamoDB</strong>, triggering real-time notifications via <strong>SNS</strong>.
+			</p>
+			<div class="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0;">
+				<span class="project-tag">AWS Lambda</span>
+				<span class="project-tag">Amazon S3</span>
+				<span class="project-tag">Amazon Textract</span>
+				<span class="project-tag">DynamoDB</span>
+				<span class="project-tag">Amazon SNS</span>
+			</div>
+			<a href="https://github.com/ThanosKele/aws-serverless-receipt-scanner" target="_blank" style="text-decoration: none; color: #007bff; font-weight: bold;">
+				View Source Code <span style="font-size: 1.2em;">&#8599;</span>
+			</a>
+		</div>
+
+		<div class="project-item">
+			<h3>🌐 Cloud Resume Portfolio</h3>
+			<p>
+				The source code for this very website! A full-stack application hosted on AWS using 
+				<strong>S3</strong> and <strong>CloudFront</strong>, featuring a real-time visitor counter 
+				powered by <strong>API Gateway</strong> and <strong>Lambda</strong>.
+			</p>
+			<div class="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0;">
+				<span class="project-tag">CloudFront</span>
+				<span class="project-tag">JavaScript</span>
+				<span class="project-tag">API Gateway</span>
+				<span class="project-tag">AWS Lambda</span>
+			</div>
+			<a href="https://github.com/ThanosKele/aws-cloud-resume-portfolio" target="_blank" style="text-decoration: none; color: #007bff; font-weight: bold;">
+				View Source Code <span style="font-size: 1.2em;">&#8599;</span>
+			</a>
+		</div>
+	</section>
+
+  
+
+    <section class="card">
+		<h2 style="border-bottom: 2px solid #FF9900; padding-bottom: 10px; margin-bottom: 15px;">📜 Certifications</h2>
+		<div class="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+			<span class="project-tag" style="background-color: #232f3e; color: white; white-space: nowrap;">AWS Certified Solutions Architect – Associate</span>
+			<span class="project-tag" style="background-color: #232f3e; color: white; white-space: nowrap;">AWS Certified AI Practitioner</span>
+			<span class="project-tag" style="background-color: #232f3e; color: white; white-space: nowrap;">AWS Certified Cloud Practitioner</span>
+		</div>
+	</section>
+</div>
+
+<footer style="text-align: center; margin-top: 50px; padding: 20px; color: #232f3e; border-top: 1px solid #ccc;">
+        <p style="font-weight: bold;">Total Views: <span id="counter" style="color: #ff9900;">Loading...</span></p>
+        <p>&copy; 2026 Thanos Kelempekas - Built with AWS</p>
+</footer>
+
+<script>
+    // API Endpoint for the Visitor Counter
+    // older Lambda version const apiURL = "https://whl6gmzcic.execute-api.us-east-1.amazonaws.com";
+	const apiURL = "https://d1fx4silgg9iud.cloudfront.net/visit";
+	
+    fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('counter').innerText = data.count;
+        })
+        .catch(error => console.error('Error:', error));
+</script>
+
+</body>
+</html>

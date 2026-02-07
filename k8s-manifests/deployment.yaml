@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume-api-deployment
+spec:
+  replicas: 2 # Θα τρέχουμε 2 αντίγραφα για να μην "πέφτει" ποτέ το site!
+  selector:
+    matchLabels:
+      app: resume-api
+  template:
+    metadata:
+      labels:
+        app: resume-api
+    spec:
+      serviceAccountName: resume-api-sa # Σύνδεση με το IAM Role
+      containers:
+      - name: resume-api
+        image: 035283050886.dkr.ecr.us-east-1.amazonaws.com/thanos-resume-api:v1
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: resume-api-service
+spec:
+  type: LoadBalancer # Αυτό θα μας δώσει το τελικό URL για το frontend!
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: resume-api
