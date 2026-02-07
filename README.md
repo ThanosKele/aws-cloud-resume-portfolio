@@ -6,53 +6,52 @@ This repository contains my personal Cloud Resume project, showcasing the evolut
 ---
 
 ## 🏗️ Phase 1: The Serverless Foundation (Legacy)
-Initially, the project was built using **AWS Lambda** and **API Gateway**. This phase focused on cost-efficiency and quick deployment.
+The project launched using a fully Serverless model to focus on rapid deployment and low maintenance.
 
-**![Architecture Phase 1 - Serverless](./architecture-diagrams/old_architecture.png)**
+**![Architecture Phase 1 - Serverless](./architecture-diagrams/old-architecture.png)**
 
-* **Backend:** Python Lambda functions.
-* **Database:** Amazon DynamoDB.
+* **Frontend:** Hosted on **Amazon S3** and distributed via **Amazon CloudFront** for global caching.
+* **Backend:** **AWS Lambda** functions triggered by **Amazon API Gateway**.
+* **Database:** **Amazon DynamoDB** for persistent visitor counting.
 * **Status:** Deprecated (Found in `backend/legacy-lambda/`).
 
 ---
 
-## 🏗️ Phase 2: Kubernetes Modernization (Current)
-To demonstrate scalability and advanced orchestration, I migrated the backend to **Amazon EKS (Kubernetes)**. This transition reflects modern DevOps practices and enterprise-level infrastructure.
-
-**![Architecture Phase 2 - EKS](./architecture-diagrams/new_architecture.png)**
-
-### **The Modern Tech Stack**
-* **Frontend:** A single, optimized index.html file (with embedded JavaScript) hosted on **Amazon S3**.
-* **Distribution:** **Amazon CloudFront** providing global low-latency and SSL.
-* **Orchestration:** **Amazon EKS** (Managed Kubernetes).
-* **IaC:** **Terraform** for full infrastructure provisioning.
-* **Containerization:** **Docker** images hosted on **Amazon ECR**.
-* **CI/CD**: **GitHub Actions** for automated frontend deployment.
+## ⚙️ Automated Deployment (CI/CD)
+From day one, the frontend deployment has been fully automated to ensure consistency and high availability.
+* **Workflow:** A **GitHub Actions** pipeline triggers on every push to `main`.
+* **S3 Sync:** The workflow authenticates with AWS and syncs the updated `index.html` to the **Amazon S3** bucket.
+* **Cache Invalidation:** Automatically creates a **CloudFront Invalidation** to ensure users instantly see the latest version, bypassing the edge cache.
 
 ---
 
-## ⚙️ Automated Deployment (CI/CD)
-The frontend deployment is fully automated to ensure high availability and rapid updates.
-* **Workflow:** Every time the `index.html` file is modified in this repository, a **GitHub Actions** workflow is triggered.
-* **AWS S3 Sync:** The workflow automatically authenticates with AWS and syncs the updated frontend files to the **Amazon S3** bucket.
-* **Consistency:** This eliminates manual upload errors and ensures the live portfolio always reflects the latest codebase.
+## 🏗️ Phase 2: Kubernetes Modernization (Current)
+To demonstrate scalability and advanced orchestration, I migrated the **backend** from Lambda to **Amazon EKS (Kubernetes)** and automated the infrastructure provisioning.
+
+**![Architecture Phase 2 - EKS](./architecture-diagrams/new-architecture.png)**
+
+### **The Migration & New Stack**
+* **Orchestration:** Migrated from Lambda to **Amazon EKS** (Managed Kubernetes).
+* **Containerization:** Packaged the Python API into **Docker** containers hosted on **Amazon ECR**.
+* **Infrastructure as Code:** Replaced manual clicks with **Terraform** to provision the VPC, EKS Cluster, and Networking.
+* **Networking:** Replaced API Gateway with an **Application Load Balancer (ALB)** managed by Kubernetes.
 
 ---
 
 ## 🛡️ Key Engineering Challenges & Solutions
 
 ### 1. **Zero-Trust Security with IRSA**
-Instead of using long-lived AWS Access Keys, I implemented **IAM Roles for Service Accounts (IRSA)**. 
+Instead of using long-lived AWS Access Keys, I implemented **IAM Roles for Service Accounts (IRSA)**.
 * **The Logic:** Kubernetes Pods assume temporary IAM roles via an OIDC provider.
 * **The Result:** Enhanced security following the **Principle of Least Privilege**.
 
 ### 2. **Networking & Reverse Proxy Logic**
-To solve **Mixed Content** issues and simplify the frontend architecture, I used **Amazon CloudFront** as a reverse proxy.
+To solve **Mixed Content** issues and simplify the frontend architecture, I re-configured **Amazon CloudFront** to act as a reverse proxy.
 * `/` -> Routes to S3 (Static Content).
 * `/visit` -> Routes to the EKS Load Balancer (Dynamic API).
 
 ### 3. **Infrastructure as Code (IaC)**
-The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is managed via **Terraform** to ensure consistency and prevent configuration drift.
+The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is now managed via **Terraform** to ensure consistency and prevent configuration drift.
 
 ---
 
@@ -69,12 +68,12 @@ The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is managed via
 
 ## 🚀 Deployment Guide
 
-1.  **Provision Infrastructure:**
+1. **Provision Infrastructure:**
     ```bash
-    cd infrastructure
+    cd cloud-resume-infra
     terraform init && terraform apply
     ```
-2.  **Apply K8s Configurations:**
+2. **Apply K8s Configurations:**
     ```bash
     kubectl apply -f k8s-manifests/service-account.yaml
     kubectl apply -f k8s-manifests/deployment.yaml
@@ -82,3 +81,5 @@ The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is managed via
 
 ---
 > **Outcome:** This project demonstrates my ability to bridge the gap between software development and cloud operations, handling security, networking, and orchestration at scale.
+
+📫 **Let's connect!** [Link to your LinkedIn]
