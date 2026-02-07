@@ -28,6 +28,7 @@ From day one, the frontend deployment has been fully automated to ensure consist
 ## 🏗️ Phase 2: Kubernetes Modernization (Current)
 To demonstrate scalability and advanced orchestration, I migrated the **backend** from Lambda to **Amazon EKS (Kubernetes)** and automated the infrastructure provisioning.
 
+```mermaid
 graph TD
     %% Setup Styles
     classDef aws fill:#FF9900,stroke:#232F3E,color:white;
@@ -74,6 +75,7 @@ graph TD
     ECR -.->|Image Pull| Pods
     Pods -->|Assume Role| IRSA
     IRSA -->|Access| DDB
+```
 
 ### **The Migration & New Stack**
 * **Orchestration:** Migrated from Lambda to **Amazon EKS** (Managed Kubernetes).
