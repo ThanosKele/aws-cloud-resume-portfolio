@@ -1,7 +1,7 @@
-# AWS Cloud Resume: The Modernization Journey 🚀
-### From Serverless (Lambda) to Cloud-Native (EKS)
+# AWS Cloud Resume: The Architectural Evolution & Cost Optimization 🚀
+### From Serverless (Lambda) ➡️ Cloud-Native (EKS) ➡️ Strategic Serverless (FinOps)
 
-This repository contains my personal Cloud Resume project, showcasing the evolution of a web application from a standard Serverless architecture to a robust, enterprise-grade **Kubernetes** environment.
+> **Executive Summary:** This project showcases my journey as a **3x AWS Certified Cloud Professional** (Cloud Practitioner, AI Practitioner, Solutions Architect Associate) and **CKA Candidate**. It demonstrates the ability to architect, migrate, and optimize enterprise-grade infrastructures while making data-driven decisions based on performance, complexity, and cost-efficiency.
 
 ---
 
@@ -20,8 +20,8 @@ The project launched using a fully Serverless model to focus on rapid deployment
 ## ⚙️ Automated Deployment (CI/CD)
 From day one, the frontend deployment has been fully automated to ensure consistency and high availability.
 * **Workflow:** A **GitHub Actions** pipeline triggers on every push to `main`.
-* **S3 Sync:** The workflow authenticates with AWS and syncs the updated `index.html` to the **Amazon S3** bucket.
-* **Cache Invalidation:** Automatically creates a **CloudFront Invalidation** to ensure users instantly see the latest version, bypassing the edge cache.
+* **S3 Sync & Invalidation:** Ensures the latest frontend is served via CloudFront instantly.
+* **IaC Consistency:** All infrastructure components (VPC, IAM, Lambda, S3) are managed via **Terraform** to prevent configuration drift.
 
 ---
 
@@ -38,6 +38,17 @@ To demonstrate scalability and advanced orchestration, I migrated the **backend*
 
 ---
 
+## 🏗️ Phase 3: The FinOps Pivot - Strategic Return to Serverless (Current)
+After successfully demonstrating enterprise orchestration with EKS, I performed a **Cost-Benefit Analysis**. For a portfolio-scale application, the operational overhead and fixed costs of an EKS cluster were not justified.
+
+### **The Decision: Right-Sizing for Value**
+* **Cost Optimization:** Migrated back to **AWS Lambda** to leverage a 100% "Pay-as-you-go" model, reducing compute costs to near-zero.
+* **Architectural Maturity:** Proven ability to choose the **Right Tool for the Job** rather than just the most complex one.
+* **Hybrid Approach:** The Terraform logic remains in the repo, proving that the infrastructure is ready to scale back to EKS instantly if business requirements change.
+* **Status:** **Active Production Environment.**
+
+---
+
 ## 🛡️ Key Engineering Challenges & Solutions
 
 ### 1. **Zero-Trust Security with IRSA**
@@ -48,10 +59,10 @@ Instead of using long-lived AWS Access Keys, I implemented **IAM Roles for Servi
 ### 2. **Networking & Reverse Proxy Logic**
 To solve **Mixed Content** issues and simplify the frontend architecture, I re-configured **Amazon CloudFront** to act as a reverse proxy.
 * `/` -> Routes to S3 (Static Content).
-* `/visit` -> Routes to the EKS Load Balancer (Dynamic API).
+* `/visit` -> Routes to the API (Lambda/EKS).
 
 ### 3. **Infrastructure as Code (IaC)**
-The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is now managed via **Terraform** to ensure consistency and prevent configuration drift.
+Managed the entire lifecycle of multi-service architectures using **Terraform** modules for reusability and scalability.
 
 ---
 
@@ -66,11 +77,11 @@ The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is now managed
 
 ---
 
-## 🚀 Deployment Guide
+## 🚀 Deployment Guide (For EKS version)
 
 1. **Provision Infrastructure:**
     ```bash
-    cd cloud-resume-infra
+    cd infrastructure
     terraform init && terraform apply
     ```
 2. **Apply K8s Configurations:**
@@ -80,4 +91,4 @@ The entire AWS environment (VPC, Subnets, NAT Gateways, EKS, IAM) is now managed
     ```
 
 ---
-> **Outcome:** This project demonstrates my ability to bridge the gap between software development and cloud operations, handling security, networking, and orchestration at scale.
+> **Outcome:** This project is a living testament to my evolution as a Cloud Engineer. It proves I can build with Serverless speed, scale with Kubernetes power, and optimize with an Architect's financial mindset.
