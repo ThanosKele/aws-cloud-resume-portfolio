@@ -16,7 +16,8 @@ app.add_middleware(
 # Σύνδεση με τη DynamoDB
 # Το EKS θα χρησιμοποιεί IAM Roles για να δώσει πρόσβαση χωρίς κλειδιά στον κώδικα
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1') # Βαζουμε το region μας
-table = dynamodb.Table('thanos-portfolio-stats')
+TABLE_NAME = os.environ.get('TABLE_NAME')
+table = dynamodb.Table(TABLE_NAME)
 
 @app.get("/")
 def read_root():
