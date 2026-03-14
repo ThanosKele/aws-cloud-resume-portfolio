@@ -1,9 +1,11 @@
 import json
 import boto3
+import os
 
 # Σύνδεση με τη DynamoDB
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('thanos-portfolio-stats')
+TABLE_NAME = os.environ.get('TABLE_NAME')
+table = dynamodb.Table(TABLE_NAME)
 
 def lambda_handler(event, context):
     # Ενημέρωση του count (προσθέτει +1 στο υπάρχον count)
