@@ -4,9 +4,9 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - feature/s3-connection-test
+  #push:
+    #branches:
+      #- feature/s3-connection-test
 
 jobs:
   test-s3:
