@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - main
-
   push:
     branches:
       - feature/s3-connection-test
@@ -24,4 +23,8 @@ jobs:
           aws-region: eu-central-1 
 
       - name: Check S3 Connection
-        run: aws s3 ls s3://${{ secrets.AWS_S3_BUCKET }} 
+        run: |
+          echo "🚀 Attempting to connect to S3 bucket: ${{ secrets.AWS_S3_BUCKET }}"
+          FILES=$(aws s3 ls s3://${{ secrets.AWS_S3_BUCKET }})
+          echo "✅ Connection Successful! Found the following files:"
+          echo "$FILES"
